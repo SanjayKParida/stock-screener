@@ -61,20 +61,20 @@ class EarningsGraph extends StatelessWidget {
           gridData: FlGridData(
             show: true,
             drawVerticalLine: true,
-            horizontalInterval: 0.05, // Smaller intervals for more detail
+            horizontalInterval: 0.05,
             verticalInterval: 1,
             getDrawingHorizontalLine: (value) {
               return FlLine(
                 color: Colors.grey.withOpacity(0.2),
                 strokeWidth: 1,
-                dashArray: [5, 5], // Dotted lines
+                dashArray: [5, 5],
               );
             },
             getDrawingVerticalLine: (value) {
               return FlLine(
                 color: Colors.grey.withOpacity(0.2),
                 strokeWidth: 1,
-                dashArray: [5, 5], // Dotted lines
+                dashArray: [5, 5],
               );
             },
           ),
@@ -94,8 +94,7 @@ class EarningsGraph extends StatelessWidget {
                     final date =
                         DateTime.parse(sortedEarnings[value.toInt()].pricedate);
                     return Transform.rotate(
-                      angle:
-                          -0.5, // Slightly angled text for better readability
+                      angle: -0.5,
                       child: Text(
                         '${_getMonthName(date.month)} ${date.year}',
                         style: TextStyle(
@@ -113,7 +112,7 @@ class EarningsGraph extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                interval: 0.1, // Smaller intervals
+                interval: 0.1,
                 reservedSize: 45,
                 getTitlesWidget: (value, meta) {
                   return Text(
@@ -133,7 +132,6 @@ class EarningsGraph extends StatelessWidget {
             border: Border.all(color: Colors.grey.withOpacity(0.5)),
           ),
           lineBarsData: [
-            // Actual EPS Line
             LineChartBarData(
               spots: List.generate(
                 sortedEarnings.length,
@@ -160,7 +158,6 @@ class EarningsGraph extends StatelessWidget {
                 color: Colors.blue.withOpacity(0.1),
               ),
             ),
-            // Estimated EPS Line
             LineChartBarData(
               spots: List.generate(
                 sortedEarnings.length,
@@ -190,7 +187,7 @@ class EarningsGraph extends StatelessWidget {
           ],
           minX: 0,
           maxX: (sortedEarnings.length - 1).toDouble(),
-          minY: _getMinY(sortedEarnings) * 0.98, // Slightly more padding
+          minY: _getMinY(sortedEarnings) * 0.98,
           maxY: _getMaxY(sortedEarnings) * 1.02,
         ),
       ),

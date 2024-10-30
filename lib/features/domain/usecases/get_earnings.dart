@@ -4,7 +4,6 @@ import '../../../core/usecase.dart';
 import '../entities/earnings.dart';
 import '../repositories/earnings_repository.dart';
 
-// Parameter class for GetEarnings
 class GetEarningsParams {
   final String ticker;
 

@@ -67,7 +67,6 @@ class _CompanySearchFieldState extends State<CompanySearchField> {
   void _handleSearch() {
     String searchText = _controller.text.trim();
 
-    // If no suggestion was selected, try to match the input with available tickers
     if (_selectedTicker == null) {
       final matchingTickers = _tickers
           .where((ticker) =>
@@ -81,14 +80,11 @@ class _CompanySearchFieldState extends State<CompanySearchField> {
       searchText = _selectedTicker!;
     }
 
-    // Extract ticker symbol from the full company name
     final ticker = searchText.split(' - ').first.trim().toUpperCase();
 
     if (ticker.isNotEmpty) {
-      // Reset the selected ticker
       _selectedTicker = null;
 
-      // Update the UI and fetch data
       setState(() {
         _controller.text = searchText;
       });

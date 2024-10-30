@@ -13,13 +13,10 @@ class EarningsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Earnings Tracker')),
-      // Add resizeToAvoidBottomInset to prevent keyboard from shrinking content
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          // Search field stays at top
           const CompanySearchField(),
-          // Wrap the BlocBuilder in Expanded and SingleChildScrollView
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -31,9 +28,8 @@ class EarningsPage extends StatelessWidget {
                     } else if (state is EarningsLoaded) {
                       return Column(
                         children: [
-                          // Fixed height container for the graph
                           SizedBox(
-                            height: 400, // Fixed height for the graph
+                            height: 400,
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: EarningsGraph(
@@ -53,7 +49,6 @@ class EarningsPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // Legend below the graph
                           const Padding(
                             padding: EdgeInsets.symmetric(vertical: 16.0),
                             child: Row(
@@ -91,7 +86,6 @@ class EarningsPage extends StatelessWidget {
   }
 }
 
-// Add a separate widget for legend items
 class _LegendItem extends StatelessWidget {
   final Color color;
   final String label;

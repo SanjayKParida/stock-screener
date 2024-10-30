@@ -75,16 +75,13 @@ class _TranscriptPageState extends State<TranscriptPage> {
 
   List<Widget> _formatTranscript(String transcript) {
     final textColor = Theme.of(context).textTheme.bodyLarge?.color;
-    // Split the transcript into paragraphs (separated by blank lines)
     final paragraphs = transcript.trim().split('\n');
 
     return paragraphs.map((paragraph) {
       paragraph = paragraph.trim();
       if (paragraph.isEmpty) {
         return const SizedBox(height: 8);
-      } // Spacing for empty lines
-
-      // Check if the paragraph starts with a speaker name (contains a colon)
+      } 
       final colonIndex = paragraph.indexOf(':');
       if (colonIndex > 0) {
         final speaker = paragraph.substring(0, colonIndex).trim();
@@ -113,7 +110,6 @@ class _TranscriptPageState extends State<TranscriptPage> {
           ),
         );
       } else {
-        // Regular paragraph without speaker
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Text(

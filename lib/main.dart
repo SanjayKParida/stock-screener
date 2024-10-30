@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create a single http client instance
     final httpClient = http.Client();
 
     return BlocProvider(
@@ -28,14 +27,14 @@ class MyApp extends StatelessWidget {
         getEarnings: GetEarnings(
           EarningsRepositoryImpl(
             remoteDataSource: EarningsRemoteDataSourceImpl(
-              client: httpClient, // Pass the client instance
+              client: httpClient, 
             ),
           ),
         ),
         getTranscript: GetTranscript(
           EarningsRepositoryImpl(
             remoteDataSource: EarningsRemoteDataSourceImpl(
-              client: httpClient, // Pass the same client instance
+              client: httpClient, 
             ),
           ),
         ),
